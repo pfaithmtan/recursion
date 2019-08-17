@@ -9,5 +9,13 @@ var stringifyJSON = function(obj) {
     return '' + obj;
   } else if (typeof obj === 'string') {
     return '"' + obj + '"';
+  } else if (Array.isArray(obj)) {
+    const result = [];
+
+    for (let i = 0; i < obj.length; i++) {
+      result.push(stringifyJSON(obj[i]));
+    }
+
+    return '[' + result + ']';
   }
 };
